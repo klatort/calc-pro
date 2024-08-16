@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+  <img class="modules-logo-logo"
+    src="https://res-img1.huaweicloud.com/content/dam/cloudbu-site/archive/china/zh-cn/activity/consoleui-resources/default/images/en-logo.svg"
+    style="width: 155px;">
+</mat-toolbar>
+<div style="display: flex; justify-content: center;">
+  <div style="flex-direction: column;">
+    <span style="margin: 1rem">No sufras como yo sufrí, calculadora automatizada con menos pasos.</span>
+    <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="onFileChanged($event)"
+      accept=".xlsx" />
+    <button mat-raised-button color="warn" style="margin: 0.5rem;" (click)="csvInput.click()">
+      <mat-icon>upload</mat-icon>
+      Subir calculadora
+    </button>
+    <button mat-raised-button [disabled]="flavors.length < 1" color="warn" style="margin: 0.5rem;" (click)="getCalc()">
+      <mat-icon>download</mat-icon>
+      {{flavors.length > 0? 'Calculadora+':'No hay ECS'}}
+    </button>
+    <table mat-table *ngIf="flavors.length > 0" [dataSource]="flavors" class="mat-elevation-z3">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Flavor</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="windows">
+        <th mat-header-cell *matHeaderCellDef>Windows?</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-checkbox [(ngModel)]="element.windows" (change)="logVal()"></mat-checkbox>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <!-- <mat-card *ngIf="flavors" style="margin: 2rem; padding: 1rem;" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>ECS en calculadora:</mat-card-title>
+        <mat-card-subtitle>Selecciona los windows</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let flavor of flavors">
+          <p>{{ flavor }}</p>
+
+        </div>
+      </mat-card-content>
+    </mat-card> -->
+  </div>
+</div>
