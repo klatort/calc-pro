@@ -48,6 +48,7 @@ def change_values(data):
             costs = get_cost_windows(flavor['name'])
             calc[flavor['row']][5].value = costs[0] # type: ignore
             calc[flavor['row']][6].value = costs[1] # type: ignore
+            calc[flavor['row'] + 1][1].value = 'Windows Server' # type: ignore
         else: 
             calc[flavor['row']][6].value = get_cost_linux(flavor['name'])
     file.save(file_path)

@@ -49,7 +49,7 @@ export class AppComponent {
             windows: false,
             row: item.row
           }));
-          this.uploadedFile = selectedFile.name;
+          this.uploadedFile = `calc_${new Date().getTime()}.xlsx`;
           console.log('Upload success', this.flavors);
         },
         error => {
@@ -68,7 +68,7 @@ export class AppComponent {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'calc_plus.xlsx';
+        a.download = this.uploadedFile;
         a.click();
         window.URL.revokeObjectURL(url);
       },
