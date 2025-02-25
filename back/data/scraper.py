@@ -138,6 +138,6 @@ try:
                     data.append({"Flavor": FLAVOR, "Price": PRICE})
                     print(FLAVOR, "|", PRICE)
     df = pd.DataFrame(data)
-    df.to_excel('RI_linux_prices.xlsx', index=False)
+    df.to_excel('RI_linux_prices.xlsx.temp', index=False)
 finally:
     driver.quit()

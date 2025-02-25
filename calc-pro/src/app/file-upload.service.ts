@@ -8,7 +8,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class FileUploadService {
 
-  private baseUrl = 'http://127.0.0.1:5000';
+  private baseUrl = 'http://101.44.10.234:5000';
 
   constructor(private http: HttpClient) { }
 

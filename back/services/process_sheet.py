@@ -14,9 +14,12 @@ def stylize_sheet(file_name):
         pass
     calc = file.worksheets[0]
     
-    calc.unmerge_cells('A1:H1')
-    calc['H1'].value = None
-    calc.merge_cells('A1:G1')
+    try:
+       calc.unmerge_cells('A1:H1')
+       calc['H1'].value = None
+       calc.merge_cells('A1:G1')
+    except:
+       pass
     calc.delete_cols(8)
     
     
