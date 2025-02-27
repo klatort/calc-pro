@@ -6,4 +6,3 @@ class Config:
     WINDOWS_PRICES_DIR = os.path.join(ROOT, './data/windows_prices.xlsx')
     LINUX_PRICES_DIR = os.path.join(ROOT, './data/RI_linux_prices.xlsx')
     UPLOAD_FOLDER = os.path.join(ROOT, 'uploads')
-    HOST=['http://101.44.10.234']

@@ -2,4 +2,4 @@ flask==3.1.0
 flask_cors==5.0.1
 openpyxl==3.1.5
 asgiref==3.8.1
-uvicorn==0.34.0
+gunicorn==23.0.0

@@ -68,7 +68,6 @@ export class AppComponent {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'calc_plus.xlsx';
         a.click();
         window.URL.revokeObjectURL(url);
       },

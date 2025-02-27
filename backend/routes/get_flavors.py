@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify, request
 from services.process_flavors import extract_flavors
-
 route_flavors = Blueprint('flavors', __name__)
 
 @route_flavors.route('/get_flavors', methods=['POST']) # type: ignore
