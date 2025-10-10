@@ -6,6 +6,16 @@ COPY . .
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 8000
+# Create necessary directories
+RUN mkdir -p /app/uploads /app/data
 
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "--log-level", "debug", "app:app"]
+# Environment variables with defaults
+ENV API_PORT=8000 \
+    GUNICORN_WORKERS=4 \
+    UPLOAD_FOLDER=/app/uploads \
+    WINDOWS_PRICES_DIR=/app/data/windows_prices.xlsx \
+    LINUX_PRICES_DIR=/app/data/RI_linux_prices.xlsx
+
+EXPOSE ${API_PORT}
+
+CMD gunicorn --bind 0.0.0.0:${API_PORT} --workers ${GUNICORN_WORKERS} --log-level debug app:app
